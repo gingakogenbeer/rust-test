@@ -6,14 +6,17 @@ fn main(){
     io::stdin().read_line(&mut p).expect("Failed to read line");
     let mut p: u32 = p.trim().parse().expect("Please type a number");
     let mut a = 2;
-    a = (a ^ (p - 1)) % p;
+    a = u32::pow(a, p-1) % p;
     println!("{}", a);
-/*  擬素数判定(100000以下)    */
-    if p == 561 || p == 1105 || p == 1729 ||
-       p == 2465 || p == 2821 || p == 6601 ||
-       p == 8911 || p == 10585 || p == 15841 || 
-       p == 29341 || p == 41041 || p == 46657 || 
-       p == 52633 || p == 62745 || p == 63973 || p == 75361 {
-        println!("擬素数");
+/*  Carmichael number(Under 100000)    */
+    match p {
+        561   | 1105  | 1729  | 
+        2465  | 2821  | 6601  | 
+        8911  | 10585 | 15841 | 
+        29341 | 41041 | 46657 | 
+        52633 | 62745 | 63973 | 
+        75361 
+           => println!("this is a Carmichael number"),
+        _  => (),
     }
 }
