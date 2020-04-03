@@ -30,6 +30,12 @@ impl DuckLike for i64{
         }
     }
 }
+//トレイト境界
+//DuckLikeトレイトを実装する型D定義し、引数duckの型として、トレイトのメソッドを実行
+fn duck_go<D: DuckLike>(duck: D){
+    duck.quack();
+    duck.walk();
+}
 fn main(){
     let duck = Duck;
     let tsuchinoko = Tsuchinoko;
@@ -38,4 +44,6 @@ fn main(){
     tsuchinoko.quack();
     tsuchinoko.walk();
     i.quack();
+
+    duck_go(duck);
 }
